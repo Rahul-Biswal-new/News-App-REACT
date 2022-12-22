@@ -3,6 +3,13 @@ import Newsitem from "./Newsitem";
 import Spinner from "./Spinner";
 
 export class News extends Component {
+  static defaultProps = {
+    country: 'us',
+    pageSize: 8,
+    category: 'general',
+  }
+
+
   // articles = [
   //   {
   //     "source": {
@@ -257,7 +264,7 @@ export class News extends Component {
     console.log("this prints third componentDidMount()");
     console.log("afer render() run componentDidMount will run");
     let url =
-      `https://newsapi.org/v2/top-headlines?country=us&apiKey=a816dd9be27b436f99b645d3be07b1a3&pageSize=${this.props.pageSize}`;
+      `https://newsapi.org/v2/top-headlines?country=${this.props.country}&apiKey=a816dd9be27b436f99b645d3be07b1a3&pageSize=${this.props.pageSize}`;
     let data = await fetch(url);
     // fetch return promise
     console.log(data);
@@ -272,7 +279,7 @@ export class News extends Component {
     console.log("previous");
     // inside previous state will change
     // state.page will change   
-    let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=a816dd9be27b436f99b645d3be07b1a3&page=${this.state.page - 1
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&apiKey=a816dd9be27b436f99b645d3be07b1a3&page=${this.state.page - 1
       }&pagesize=${this.props.pageSize}`;
     this.setState({loading: true})
     
@@ -288,7 +295,7 @@ export class News extends Component {
     if (!(this.state.page + 1 > Math.ceil(this.state.totalResults / this.props.pageSize))) {
 
       // console.log("Next");
-      let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=a816dd9be27b436f99b645d3be07b1a3&page=${this.state.page + 1
+      let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&apiKey=a816dd9be27b436f99b645d3be07b1a3&page=${this.state.page + 1
         }&pagesize=${this.props.pageSize}`;
       this.setState({loading: true})
       let data = await fetch(url);
