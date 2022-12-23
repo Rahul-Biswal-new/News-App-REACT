@@ -262,9 +262,9 @@ export class News extends Component {
   async componentDidMount() {
     // after render() loads componentDidMount() renders
     console.log("this prints third componentDidMount()");
-    console.log("afer render() run componentDidMount will run");
+
     let url =
-      `https://newsapi.org/v2/top-headlines?country=${this.props.country}&apiKey=a816dd9be27b436f99b645d3be07b1a3&pageSize=${this.props.pageSize}`;
+      `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=a816dd9be27b436f99b645d3be07b1a3&pageSize=${this.props.pageSize}`;
     let data = await fetch(url);
     // fetch return promise
     console.log(data);
@@ -279,7 +279,7 @@ export class News extends Component {
     console.log("previous");
     // inside previous state will change
     // state.page will change   
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&apiKey=a816dd9be27b436f99b645d3be07b1a3&page=${this.state.page - 1
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=a816dd9be27b436f99b645d3be07b1a3&page=${this.state.page - 1
       }&pagesize=${this.props.pageSize}`;
     this.setState({loading: true})
     
@@ -295,7 +295,7 @@ export class News extends Component {
     if (!(this.state.page + 1 > Math.ceil(this.state.totalResults / this.props.pageSize))) {
 
       // console.log("Next");
-      let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&apiKey=a816dd9be27b436f99b645d3be07b1a3&page=${this.state.page + 1
+      let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=a816dd9be27b436f99b645d3be07b1a3&page=${this.state.page + 1
         }&pagesize=${this.props.pageSize}`;
       this.setState({loading: true})
       let data = await fetch(url);
@@ -348,7 +348,7 @@ export class News extends Component {
                       ? element.urlToImage
                       : "https://images.unsplash.com/photo-1669173732969-66f67d37f3ca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDJ8Qm4tRGpyY0Jyd298fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60"
                   }
-                  newsUrl={element.url}
+                  newsUrl={element.url} author={element.author} date={element.publishedAt} source={element.source.name}
                 />
               </div>
             );
