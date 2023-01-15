@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 // import PropTypes from 'prop-types'
 
 export class Navbar extends Component {
@@ -11,9 +12,9 @@ export class Navbar extends Component {
       <div>
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
           <div className="container-fluid">
-            <a className="navbar-brand" href="/">
+            <Link className="navbar-brand" to="/">
               News React
-            </a>
+            </Link>
             <button
               className="navbar-toggler"
               type="button"
@@ -31,49 +32,45 @@ export class Navbar extends Component {
             >
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="/">
+                  <Link className="nav-link active" aria-current="page" to="/">
                     Home
-                  </a>
+                  </Link>
+                </li>
+
+                <li className="nav-item">
+                  <Link className="nav-link" to="/business">
+                  business
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/about">
-                    About
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="/Bussiness">
-                    Bussiness
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="/Entertainment">
+                  <Link className="nav-link" to="/Entertainment">
                     Entertainment
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/General">
+                  <Link className="nav-link" to="/">
                     General
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/Health">
+                  <Link className="nav-link" to="/Health">
                     Health
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/Science">
+                  <Link className="nav-link" to="/Science">
                   Science
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/Sports">
+                  <Link className="nav-link" to="/Sports">
                     Sports
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/Technology">
+                  <Link className="nav-link" to="/Technology">
                     Technology
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
