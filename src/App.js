@@ -2,17 +2,21 @@ import './App.css';
 import React, { Component } from 'react'
 import Navbar from './components/Navbar';
 import News from './components/News';
-
-import { BrowserRouter as Router,
-  
-  Route,
-  
+import { BrowserRouter as Router,Route,
 } from "react-router-dom";
 import { Routes } from 'react-router-dom';
+import LoadingBar from 'react-top-loading-bar'
 
 
 export default class App extends Component {
   // c = 'john';
+  state = {
+    progress: 0,
+  }
+
+  setProgress(){
+    this.setState({progress: progress})
+  }
   render() {
     return (
 
@@ -20,14 +24,13 @@ export default class App extends Component {
          <Router>
         <Navbar/>
         {/* <News pageSize={8} country = 'us' category="general"/> */}
+        <LoadingBar
+        color='#f11946'
+        progress={this.state.progress}
+        onLoaderFinished={() => setProgress(0)}
+      />
           
           <Routes>
-          {/* <Route path='/'><News pageSize={8} country = 'us' category="general"/></Route>
-          <Route path='/Bussiness'><News pageSize={8} country = 'us' category="Bussiness"/></Route>
-          <Route path='/Entertainment'><News pageSize={8} country = 'us' category="Entertainment"/></Route>
-          <Route path='/Health'><News pageSize={8} country = 'us' category="Health"/></Route>
-          <Route path='/Science'><News pageSize={8} country = 'us' category="Science"/></Route>
-          <Route path='/Sports'><News pageSize={8} country = 'us' category="Sports"/></Route> */}
           <Route exact path="/" element={<News key="general" pageSize={8} country = 'us' category="general"/>}/>
           <Route exact path="/business" element={<News key="business" pageSize={8} country = 'us' category="business"/>}/>
           <Route exact path="/Entertainment" element={<News key="Entertainment" pageSize={8} country = 'us' category="Entertainment"/>}/>
